@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple House</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet"/>
+    <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+
+<div class="container">
+    <th:block th:insert="~{/ui/pages/layouts/header.html::header}"/>
+    <div class="tm-paging-links">
+        <nav>
+            <ul>
+                <li class="tm-paging-item"><a href="#" class="tm-paging-link active">Pizza</a></li>
+                <li class="tm-paging-item"><a href="#" class="tm-paging-link">Sorted by price</a></li>
+                <li class="tm-paging-item"><a href="#" class="tm-paging-link">Sort alphabetically</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="row tm-gallery">
+        <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+
+            <div th:each="pizza: ${pizzas}">
+
+                <div class="item">
+                    <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+                        <div class="box_img">
+                            <img th:src="@{'/img/' + ${pizza.name} + '.png'}" class="img-fluid tm-gallery-img"/>
+                        </div>
+                        <figcaption>
+                            <!--                        <div class="pizza_caption">-->
+                            <h4 class="tm-gallery-title">[[${pizza.name}]]</h4>
+                            <!--                        </div>-->
+                            <div class="box_description">
+                                <p class="tm-gallery-description" th:text="${pizza.techCart}"></p>
+                            </div>
+                            <div class="box_price">
+                                <form method="post" action="/cart/add">
+                                    <input type="text" name="pizzaId" th:value="${pizza.id}" hidden>
+                                    <p class="tm-gallery-price" th:text="${pizza.price + ' &#8381;'}"></p>
+                                    <input type="submit" class="button_bay" sec:authorize="hasRole('ROLE_USER')"
+                                           value="В корзину">
+                                </form>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/parallax.min.js"></script>
+<script src="js/pizza.js"></script>
+</body>
+</html>

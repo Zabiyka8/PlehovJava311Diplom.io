@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/styles/style.css"/>
+</head>
+<body>
+<th:block th:fragment="header">
+    <header>
+        <div class="placeholder">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="img/simple-house-01.jpg">
+                <div class="tm-header">
+                    <div class="row tm-header-inner">
+                        <div class="col-md-6 col-12">
+                            <img src="img/simple-house-logo.png" alt="Logo" class="tm-site-logo"/>
+                            <div class="tm-site-text-box">
+                                <h1 class="tm-site-title">Simple House</h1>
+                                <h6 class="tm-site-description">new restaurant template</h6>
+                            </div>
+                        </div>
+                        <nav class="col-md-6 col-12 tm-nav">
+                            <ul class="tm-nav-ul">
+                                <li class="tm-nav-li"><a href="/" class="tm-nav-link active">Menu</a></li>
+                                <li class="tm-nav-li" sec:authorize="hasRole('ROLE_USER')"><a href="/cart"
+                                                                                              class="tm-nav-link">Cart</a>
+                                </li>
+                                <li class="tm-nav-li" sec:authorize="hasRole('ROLE_EMPLOYEE')"><a href="/manager"
+                                                                                                  class="tm-nav-link">Order</a>
+                                </li>
+                                <li class="tm-nav-li" sec:authorize="anonymous"><a href="/login"
+                                                                                   class="tm-nav-link">Login</a></li>
+                                <li class="tm-nav-li" sec:authorize="isAuthenticated()"><a href="/logout"
+                                                                                              class="tm-nav-link">Logout</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+</th:block>
+
+</body>
+</html>
