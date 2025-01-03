@@ -22,7 +22,7 @@ public class ManagerController {
     public String managersPage(Model model) {
         List<Order> ordersToDeliver = orderService.ordersToDeliver();
         model.addAttribute("orders", ordersToDeliver);
-        return "ui/pages/managerHomePage";
+        return "ui/pages/managerOrderPage";
     }
 
     @PostMapping("/deliver")

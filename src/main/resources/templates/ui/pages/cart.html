@@ -67,7 +67,7 @@
                     <img th:src="@{'/img/' + ${position.pizza.name} + '.png'}" class="img-fluid tm-gallery-img"/>
                 </td>
                 <td th:text="${position.pizza.name}"></td>
-                <td th:text="${position.pizza.price} + ' ₽'"></td>
+                <td th:text="${position.pizza.price} + ' ₽ x '"></td>
                 <td>
                     <span th:text="${position.amount}"></span>
                 </td>

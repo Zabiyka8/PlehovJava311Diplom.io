@@ -143,7 +143,7 @@ public class OrderServiceImplementation implements OrderService {
         String subject = "Заказ оплачен";
         String messageBody =
                 "Вас беспокоит Simple House, " +
-                "/nЗаказ оплачен и будет доставлен по адресу: " + orderToDeliver.getProfile().getAddress();
+                "\nЗаказ оплачен и будет доставлен по адресу: " + orderToDeliver.getProfile().getAddress();
         String emailTo = orderToDeliver.getProfile().getEmail();
         sendDeliveryEmail(subject, emailTo, messageBody);
     }
